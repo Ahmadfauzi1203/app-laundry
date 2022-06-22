@@ -51,7 +51,7 @@ class Autentifikasi extends CI_Controller
     function logout()
     {
         $this->session->sess_destroy();
-        redirect('autentifikasi');
+        redirect('autentifikasi'); 
     }
 }
 
