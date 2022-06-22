@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jun 2022 pada 04.36
+-- Waktu pembuatan: 22 Jun 2022 pada 10.00
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.29
 
@@ -46,7 +46,11 @@ INSERT INTO `detail` (`iddetail`, `idjenispakaian`, `kd_transaksi`, `berat`, `ju
 (31, 1, 33, 5, 2, 75000, 0, 0),
 (32, 1, 34, 5, 5, 75000, 0, 0),
 (33, 3, 35, 0, 2, 100000, 0, 0),
-(34, 1, 35, 2, 3, 30000, 0, 0);
+(34, 1, 35, 2, 3, 30000, 0, 0),
+(35, 1, 36, 0, 2, 0, 0, 0),
+(36, 3, 36, 0, 2, 110000, 0, 0),
+(37, 1, 37, 1, 3, 15000, 0, 0),
+(38, 3, 37, 0, 2, 110000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -75,7 +79,11 @@ INSERT INTO `detailpemesanan` (`iddetailpemesanan`, `pemesanan_id`, `idjenispaka
 (15, 31, 1, 3),
 (16, 31, 2, 2),
 (17, 32, 1, 3),
-(18, 32, 2, 1);
+(18, 32, 2, 1),
+(19, 33, 1, 2),
+(20, 33, 3, 2),
+(21, 34, 1, 3),
+(22, 34, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -97,7 +105,8 @@ CREATE TABLE `jenispakaian` (
 INSERT INTO `jenispakaian` (`idjenispakaian`, `jenis`, `harga`, `statusbiaya`) VALUES
 (1, 'Pakaian Biasa', 15000, 'perkilo'),
 (2, 'Selimut', 25000, 'perpotong'),
-(3, 'Bad Cover', 50000, 'perpotong');
+(3, 'Bad Cover', 55000, 'perpotong'),
+(4, 'Jas', 50000, 'perpotong');
 
 -- --------------------------------------------------------
 
@@ -140,7 +149,9 @@ CREATE TABLE `pelanggan` (
 
 INSERT INTO `pelanggan` (`kd_pelanggan`, `nama`, `alamat`, `no_hp`, `jk`, `iduser`) VALUES
 (12, 'karim', 'cigayong', '089838648323', 'Pria', 9),
-(13, 'ozi', 'cijantung', '23123930', 'Pria', 10);
+(13, 'ozi', 'cijantung', '23123930', 'Pria', 10),
+(15, 'azi', 'cisaat', '0887878', 'Pria', 12),
+(16, 'budi', 'jatiwaringin', '078979', 'Pria', 13);
 
 -- --------------------------------------------------------
 
@@ -166,7 +177,9 @@ INSERT INTO `pemesanan` (`id`, `kd_pemesanan`, `tgl_pemesanan`, `kd_pelanggan`, 
 (29, 'LNY-00005', '2022-06-21', 13, 'Selesai'),
 (30, 'LNY-00006', '2022-06-21', 13, 'Batal'),
 (31, 'LNY-00007', '2022-06-21', 13, 'Batal'),
-(32, 'LNY-00008', '2022-06-21', 13, 'Boking');
+(32, 'LNY-00008', '2022-06-21', 13, 'Boking'),
+(33, 'LNY-00009', '2022-06-22', 13, 'Selesai'),
+(34, 'LNY-00010', '2022-06-22', 15, 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -209,7 +222,9 @@ CREATE TABLE `transaksi` (
 INSERT INTO `transaksi` (`id_pemesanan`, `kd_transaksi`, `kd_pegawai`, `tgl_ambil`, `total`) VALUES
 (27, 33, 5, '2022-06-22', 75000),
 (28, 34, 5, '2022-06-21', 75000),
-(29, 35, 5, '2022-06-22', 130000);
+(29, 35, 5, '2022-06-22', 130000),
+(33, 36, 5, '2022-06-22', 110000),
+(34, 37, 5, '2022-06-22', 125000);
 
 -- --------------------------------------------------------
 
@@ -233,7 +248,9 @@ INSERT INTO `user` (`iduser`, `username`, `password`, `jenis`) VALUES
 (8, 'burhanudin', 'd41d8cd98f00b204e9800998ecf8427e', 'Member'),
 (9, 'karim', '2167a6ac80340b69f3b05b800417d6c7', 'Member'),
 (10, 'ozi', '827ccb0eea8a706c4c34a16891f84e7b', 'Member'),
-(11, 'dfsdfsdf', 'd41d8cd98f00b204e9800998ecf8427e', 'Member');
+(11, 'dfsdfsdf', 'd41d8cd98f00b204e9800998ecf8427e', 'Member'),
+(12, 'azi', '827ccb0eea8a706c4c34a16891f84e7b', 'Member'),
+(13, 'budi', 'd41d8cd98f00b204e9800998ecf8427e', 'Member');
 
 --
 -- Indexes for dumped tables
@@ -310,37 +327,37 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail`
 --
 ALTER TABLE `detail`
-  MODIFY `iddetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `iddetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `detailpemesanan`
 --
 ALTER TABLE `detailpemesanan`
-  MODIFY `iddetailpemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `iddetailpemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenispakaian`
 --
 ALTER TABLE `jenispakaian`
-  MODIFY `idjenispakaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idjenispakaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `kd_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `kd_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `kd_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `kd_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `profile`
@@ -352,13 +369,13 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `kd_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `kd_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
