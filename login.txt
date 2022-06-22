@@ -1,0 +1,10 @@
+sebagai Administrator:
+username: admin
+Password: admin
+
+sebagai user:
+username: ozi
+password: 12345
+
+nb bisa langsung register jika 
+tidak ingin menggunakan akun diatas
